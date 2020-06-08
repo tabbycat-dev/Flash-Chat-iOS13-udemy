@@ -7,14 +7,22 @@
 //
 
 import UIKit
-
+import Firebase
+import IQKeyboardManagerSwift //bring up keyboard
+// have a look https://github.com/hackiftekhar/IQKeyboardManager/wiki/Properties-&-Functions
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        IQKeyboardManager.shared.enable = true //bring up/scroll up keyboard
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        print(db)
         return true
     }
 
